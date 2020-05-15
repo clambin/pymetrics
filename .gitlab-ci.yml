@@ -52,7 +52,8 @@ sast:
     - pipenv install --dev
   script:
     - PIPENV_PYUP_API_KEY="" pipenv check
-    - pipenv run bandit -r pimetrics/*.py || true
+    - pipenv run bandit -r -ll pimetrics/*.py
+    # doesn't work without gitlab ultimate
     - pipenv run bandit -r -ll -f json -o gl-sast-report.json pimetrics/*.py
   artifacts:
     reports:
