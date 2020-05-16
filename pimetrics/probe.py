@@ -7,7 +7,7 @@ A set of Probes to measure values from different sources and report them to a re
 
 import queue
 import shlex
-import subprocess  #nosec
+import subprocess  # nosec
 import threading
 import requests
 from abc import ABC, abstractmethod
@@ -148,7 +148,7 @@ class _ProcessReader:
     """
     def __init__(self, cmd):
         self.cmd = cmd
-        self.process = subprocess.Popen(shlex.split(cmd), stdout=subprocess.PIPE, encoding='utf-8')  #nosec
+        self.process = subprocess.Popen(shlex.split(cmd), stdout=subprocess.PIPE, encoding='utf-8')  # nosec
         self.queue = queue.Queue()
         self.thread = threading.Thread(target=self._enqueue_output)
         self.thread.daemon = True
